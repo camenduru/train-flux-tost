@@ -1,0 +1,20 @@
+{
+    "name":"clayify",
+    "images": [
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/01_Euler_magical%20library.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/02_Euler_cute%20kitten.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/03_Euler_cowboy.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/04_Euler_necromancer.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/05_Euler_alien.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/06_Euler_alien.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/07_Euler_spring%20landscape.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/08_Euler_jellyfish.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/09_Euler_african%20hydropunk%20princess.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/10_Euler_cyberpunk%20girl.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/11_Euler_bird%20on%20a%20branch%20with%20flowers.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/12_Euler_flamingo%20in%20the%20water.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/13_Euler_Luncheon%20of%20the%20Boating%20Party.jpg"},
+        {"url": "https://huggingface.co/camenduru/clayify_test/resolve/main/14_Euler_cozy%20study%20with%20a%20fireplace.jpg"}
+    ],
+    "config_yaml_url":"https://huggingface.co/camenduru/clayify_test/raw/main/replace.yaml"
+}

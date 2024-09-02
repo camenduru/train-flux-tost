@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+    "type": "object",
+    "properties": {
+      "readme": {
+        "type": "string",
+        "title": "Bilateral Reference for High-Resolution Dichotomous Image Segmentation",
+        "author": "Peng Zheng, Dehong Gao, Deng-Ping Fan, Li Liu, Jorma Laaksonen, Wanli Ouyang, Nicu Sebe",
+        "page": "https://www.birefnet.top/",
+        "paper": "https://arxiv.org/abs/2401.03407",
+        "code": "https://github.com/ZhengPeng7/BiRefNet",
+        "jupyter": "https://github.com/camenduru/BiRefNet-jupyter",
+        "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/birefnet.ipynb",
+        "tags": [
+          "Vision to Image"
+        ],
+        "widget": "readme"
+      },
+      "name": {
+        "type": "string",
+        "description": "Name",
+        "widget": "textarea"
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Input Image URL",
+              "widget": "textarea"
+            }
+          }
+        }
+      },
+      "config_yaml_url": {
+        "type": "string",
+        "description": "Config yaml URL",
+        "widget": "textarea"
+      }
+    },
+    "buttons": [
+      {
+        "id": "enter",
+        "label": "🥪 Enter"
+      }
+    ]
+  }
