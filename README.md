@@ -6,13 +6,10 @@
 https://tost.ai
 
 ### 🧬 Code
-
-
-### 📄 Paper
-
+https://github.com/black-forest-labs/flux
 
 ### 🌐 Page
-
+https://blackforestlabs.ai/
 
 ### 🖼 Output
 
