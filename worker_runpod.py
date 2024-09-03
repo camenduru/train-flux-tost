@@ -64,7 +64,10 @@ def generate(input):
         job_id = values['job_id']
         del values['job_id']
         uploader = CatboxUploader(result)
-        result_url = uploader.execute()
+        for attempt in range(5):
+            result_url = uploader.execute()
+            if 'html' not in result_url.lower():
+                break
         payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{discord_channel}/messages",
