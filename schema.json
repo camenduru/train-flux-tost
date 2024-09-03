@@ -18,7 +18,7 @@
     },
     "name": {
       "type": "string",
-      "description": "Trigger Word",
+      "description": "Trigger Word (should be unique, like c7ay1fy)",
       "widget": "textarea"
     },
     "images": {
