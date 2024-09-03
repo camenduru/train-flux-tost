@@ -11,7 +11,7 @@
         "jupyter": "https://github.com/camenduru/flux-jupyter",
         "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
         "tags": [
-          "Vision to Image"
+          "Text to Image"
         ],
         "widget": "readme"
       },
