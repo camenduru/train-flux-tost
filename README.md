@@ -12,7 +12,7 @@ https://github.com/black-forest-labs/flux
 https://blackforestlabs.ai/
 
 ### 🖼 Output
-
+![Screenshot 2024-09-03 181320](https://github.com/user-attachments/assets/c8a43628-e07b-4cb9-9e63-a7295a139f01)
 
 ### 🏢 Sponsor
 https://runpod.io
