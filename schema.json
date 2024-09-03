@@ -1,48 +1,49 @@
 {
-    "$schema": "http://json-schema.org/draft-04/hyper-schema#",
-    "type": "object",
-    "properties": {
-      "readme": {
-        "type": "string",
-        "title": "Model: Flux.1 Dev | Train Lora",
-        "author": "Black Forest Labs: Andreas Blattmann, Andrew Holmes, Axel Sauer, Dominik Lorenz, Dustin Podell, Frederic Boesel, Harry Saini, Jonas Müller, Kyle Lacey, Patrick Esser, Robin Rombach, Sumith Kulal, Tim Dockhorn, Yam Levi, Zion English",
-        "page": "https://blackforestlabs.ai/",
-        "code": "https://github.com/black-forest-labs/flux",
-        "jupyter": "https://github.com/camenduru/flux-jupyter",
-        "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
-        "tags": [
-          "Text to Image"
-        ],
-        "widget": "readme"
-      },
-      "name": {
-        "type": "string",
-        "description": "Trigger Word",
-        "widget": "textarea"
-      },
-      "images": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string",
-              "description": "Input Image URL",
-              "widget": "textarea"
-            }
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "properties": {
+    "readme": {
+      "type": "string",
+      "title": "Model: Flux.1 Dev | Train Lora",
+      "author": "Black Forest Labs: Andreas Blattmann, Andrew Holmes, Axel Sauer, Dominik Lorenz, Dustin Podell, Frederic Boesel, Harry Saini, Jonas Müller, Kyle Lacey, Patrick Esser, Robin Rombach, Sumith Kulal, Tim Dockhorn, Yam Levi, Zion English",
+      "page": "https://blackforestlabs.ai/",
+      "code": "https://github.com/black-forest-labs/flux",
+      "jupyter": "https://github.com/ostris/ai-toolkit",
+      "tutorial": "https://www.youtube.com/watch?v=BsmVflnxWtQ",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
+      "tags": [
+        "Text to Image"
+      ],
+      "widget": "readme"
+    },
+    "name": {
+      "type": "string",
+      "description": "Trigger Word",
+      "widget": "textarea"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Input Image URL",
+            "widget": "textarea"
           }
         }
-      },
-      "config_yaml_url": {
-        "type": "string",
-        "description": "Config yaml URL",
-        "widget": "textarea"
       }
     },
-    "buttons": [
-      {
-        "id": "enter",
-        "label": "🥪 Enter"
-      }
-    ]
-  }
+    "config_yaml_url": {
+      "type": "string",
+      "description": "Config yaml URL",
+      "widget": "textarea"
+    }
+  },
+  "buttons": [
+    {
+      "id": "enter",
+      "label": "🥪 Enter"
+    }
+  ]
+}
