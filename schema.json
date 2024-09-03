@@ -37,7 +37,8 @@
     "config_yaml_url": {
       "type": "string",
       "description": "Config yaml URL",
-      "widget": "textarea"
+      "widget": "textarea",
+      "readOnly": true
     }
   },
   "buttons": [
