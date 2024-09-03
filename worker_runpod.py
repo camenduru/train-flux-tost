@@ -2,6 +2,7 @@ import os, json, tempfile, requests, runpod
 
 import yaml
 from toolkit.job import get_job
+
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, file_name)
@@ -11,7 +12,6 @@ def download_file(url, save_dir, file_name):
         file.write(response.content)
     return file_path
 
-@torch.inference_mode()
 def generate(input):
     values = input['input']
 

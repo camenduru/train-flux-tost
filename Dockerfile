@@ -43,6 +43,6 @@ RUN pip install -q torch==2.4.0+cu121 torchvision==0.19.0+cu121 torchaudio==2.4.
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev-diffusers/resolve/main/vae/diffusion_pytorch_model.safetensors -d /content/model/vae -o diffusion_pytorch_model.safetensors && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev-diffusers/raw/main/model_index.json -d /content/model -o model_index.json    
 
-COPY ./worker_runpod.py /content/worker_runpod.py
-WORKDIR /content
+COPY ./worker_runpod.py /content/ai-toolkit/worker_runpod.py
+WORKDIR /content/ai-toolkit
 CMD python worker_runpod.py
