@@ -4,13 +4,12 @@
     "properties": {
       "readme": {
         "type": "string",
-        "title": "Bilateral Reference for High-Resolution Dichotomous Image Segmentation",
-        "author": "Peng Zheng, Dehong Gao, Deng-Ping Fan, Li Liu, Jorma Laaksonen, Wanli Ouyang, Nicu Sebe",
-        "page": "https://www.birefnet.top/",
-        "paper": "https://arxiv.org/abs/2401.03407",
-        "code": "https://github.com/ZhengPeng7/BiRefNet",
-        "jupyter": "https://github.com/camenduru/BiRefNet-jupyter",
-        "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/birefnet.ipynb",
+        "title": "Model: Flux.1 Dev | Train Lora",
+        "author": "Black Forest Labs: Andreas Blattmann, Andrew Holmes, Axel Sauer, Dominik Lorenz, Dustin Podell, Frederic Boesel, Harry Saini, Jonas Müller, Kyle Lacey, Patrick Esser, Robin Rombach, Sumith Kulal, Tim Dockhorn, Yam Levi, Zion English",
+        "page": "https://blackforestlabs.ai/",
+        "code": "https://github.com/black-forest-labs/flux",
+        "jupyter": "https://github.com/camenduru/flux-jupyter",
+        "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
         "tags": [
           "Vision to Image"
         ],
