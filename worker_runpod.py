@@ -31,8 +31,6 @@ def generate(input):
         config = yaml.safe_load(file)
     config['config']['name'] = name
     config['config']['process'][0]['datasets'][0]['folder_path'] = config['config']['process'][0]['datasets'][0]['folder_path'].replace('replace', name)
-    for i, prompt in enumerate(config['config']['process'][0]['sample']['prompts']):
-        config['config']['process'][0]['sample']['prompts'][i] = prompt.replace('replace', name)
     config['config']['process'][0]['trigger_word'] = name
     with open(config_yaml_file, 'w') as file:
         yaml.dump(config, file, sort_keys=False)
