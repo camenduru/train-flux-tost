@@ -2,6 +2,7 @@ import os, json, tempfile, requests, runpod
 
 import yaml
 from toolkit.job import get_job
+from pyupload.uploader import *
 
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
@@ -64,18 +65,15 @@ def generate(input):
             discord_token = os.getenv('com_camenduru_discord_token')
         job_id = values['job_id']
         del values['job_id']
-        default_filename = os.path.basename(result)
-        with open(result, "rb") as file:
-            files = {default_filename: file.read()}
-        payload = {"content": f"{json.dumps(values)} <@{discord_id}>"}
+        uploader = CatboxUploader(result)
+        result_url = uploader.execute()
+        payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{discord_channel}/messages",
             data=payload,
-            headers={"Authorization": f"Bot {discord_token}"},
-            files=files
+            headers={"Authorization": f"Bot {discord_token}"}
         )
         response.raise_for_status()
-        result_url = response.json()['attachments'][0]['url']
         notify_payload = {"jobId": job_id, "result": result_url, "status": "DONE"}
         web_notify_uri = os.getenv('com_camenduru_web_notify_uri')
         web_notify_token = os.getenv('com_camenduru_web_notify_token')
