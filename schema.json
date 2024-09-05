@@ -18,7 +18,7 @@
     },
     "name": {
       "type": "string",
-      "description": "⚠ Trigger Word should be unique, like c7ay1fy. Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe",
+      "description": "⚠ Trigger Word should be unique, like c7ay1fy. ⚠ Uploading images to the Tost server will take some time.",
       "widget": "textarea"
     },
     "input_image_files": {
