@@ -18,7 +18,7 @@ def generate(input):
 
     name = values['name']
     name = name.replace(" ", "_")
-    images = values['images']
+    images = values['input_image_files']
     config_yaml_url = values['config_yaml_url']
 
     temp_path = '/content/ai-toolkit/temp'

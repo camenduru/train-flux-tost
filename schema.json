@@ -21,15 +21,15 @@
       "description": "⚠ Trigger Word should be unique, like c7ay1fy. Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe",
       "widget": "textarea"
     },
-    "images": {
+    "input_image_files": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "url": {
             "type": "string",
-            "description": "Input Image URL",
-            "widget": "textarea"
+            "description": "Input Image: ",
+            "widget": "file"
           }
         }
       }

@@ -1,20 +1,4 @@
 {
     "name":"c7ay1fy",
-    "images": [
-        {"url": "https://files.catbox.moe/wj8fbd.jpg"},
-        {"url": "https://files.catbox.moe/ivr5ug.jpg"},
-        {"url": "https://files.catbox.moe/klpt02.jpg"},
-        {"url": "https://files.catbox.moe/bm99kw.jpg"},
-        {"url": "https://files.catbox.moe/pkbuvk.jpg"},
-        {"url": "https://files.catbox.moe/uhvkxd.jpg"},
-        {"url": "https://files.catbox.moe/b2oty1.jpg"},
-        {"url": "https://files.catbox.moe/9ohbp9.jpg"},
-        {"url": "https://files.catbox.moe/5g4y02.jpg"},
-        {"url": "https://files.catbox.moe/u35ctc.jpg"},
-        {"url": "https://files.catbox.moe/s0dklz.jpg"},
-        {"url": "https://files.catbox.moe/mq4ypv.jpg"},
-        {"url": "https://files.catbox.moe/iprgt2.jpg"},
-        {"url": "https://files.catbox.moe/lageyw.jpg"}
-    ],
     "config_yaml_url":"https://huggingface.co/camenduru/clayify_test/raw/main/replace.yaml"
 }
