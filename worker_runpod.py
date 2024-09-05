@@ -1,8 +1,9 @@
-import os, json, tempfile, requests, runpod
+import os, shutil, json, tempfile, requests, runpod
 
 import yaml
 from toolkit.job import get_job
 from pyupload.uploader import *
+from slugify import slugify
 
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
@@ -17,7 +18,7 @@ def generate(input):
     values = input['input']
 
     name = values['name']
-    name = name.replace(" ", "_")
+    name = slugify(name)
     images = values['input_image_files']
     config_yaml_url = values['config_yaml_url']
 
@@ -44,6 +45,7 @@ def generate(input):
     job.cleanup()
 
     result = f"/content/ai-toolkit/output/{name}/{name}.safetensors"
+    result_path = f"/content/ai-toolkit/output/{name}"
     try:
         notify_uri = values['notify_uri']
         del values['notify_uri']
@@ -96,7 +98,9 @@ def generate(input):
             pass
         return {"jobId": job_id, "result": f"FAILED: {str(e)}", "status": "FAILED"}
     finally:
-        if os.path.exists(result):
-            os.remove(result)
+        if os.path.exists(temp_path):
+            shutil.rmtree(temp_path)
+        if os.path.exists(result_path):
+            shutil.rmtree(result_path)
 
 runpod.serverless.start({"handler": generate})
