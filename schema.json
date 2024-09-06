@@ -18,11 +18,13 @@
     },
     "name": {
       "type": "string",
-      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ Uploading more than 15 images may fail. ⚠ Uploading images to the Tost server may take some time.",
+      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can upload a maximum of 12 images. ⚠ Uploading images to the Tost server may take some time.",
       "widget": "textarea"
     },
     "input_image_files": {
       "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
       "items": {
         "type": "object",
         "properties": {
