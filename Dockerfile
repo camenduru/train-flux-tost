@@ -17,7 +17,7 @@ RUN pip install -q torch==2.4.0+cu121 torchvision==0.19.0+cu121 torchaudio==2.4.
     transformers==4.44.2 diffusers==0.30.1 accelerate==0.33.0 peft==0.12.0 controlnet_aux==0.0.9 opencv-python==4.10.0.84 python-slugify==8.0.4 oyaml==1.0 albumentations==1.4.14 \
     lpips==0.1.4 einops==0.8.0 sentencepiece==0.2.0 huggingface_hub==0.24.6 hf_transfer==0.1.8 lycoris-lora==3.0.0.post1 flatten_json==0.1.14 pyyaml==6.0.2 tensorboard==2.17.1 \
     kornia==0.7.3 invisible-watermark==0.2.0 toml==0.10.2 pydantic==2.8.2 omegaconf==2.3.0 k-diffusion==0.1.1.post1 open_clip_torch==2.26.1 timm==0.6.7 prodigyopt==1.0 python-dotenv==1.0.1 \
-    bitsandbytes==0.43.3 pytorch_fid==0.3.0 optimum-quanto==0.2.4 protobuf==5.28.0 pyupload==0.1.4 runpod && \
+    bitsandbytes==0.43.3 pytorch_fid==0.3.0 optimum-quanto==0.2.4 protobuf==5.28.0 git+https://github.com/yukinotenshi/pyupload runpod && \
     git clone https://github.com/ostris/ai-toolkit /content/ai-toolkit && cd /content/ai-toolkit && git submodule update --init --recursive && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev-diffusers/raw/main/scheduler/scheduler_config.json -d /content/model/scheduler -o scheduler_config.json && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev-diffusers/raw/main/text_encoder/config.json -d /content/model/text_encoder -o config.json && \

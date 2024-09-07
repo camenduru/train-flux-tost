@@ -2,8 +2,9 @@ import os, shutil, json, tempfile, requests, runpod
 
 import yaml
 from toolkit.job import get_job
-from pyupload.uploader import *
+from huggingface_hub import upload_file
 from slugify import slugify
+from datetime import datetime
 
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
@@ -65,11 +66,11 @@ def generate(input):
             discord_token = os.getenv('com_camenduru_discord_token')
         job_id = values['job_id']
         del values['job_id']
-        uploader = CatboxUploader(result)
-        for attempt in range(5):
-            result_url = uploader.execute()
-            if 'html' not in result_url.lower():
-                break
+        hf_token = os.getenv('com_camenduru_hf_token')
+        hf_repo_id = os.getenv('com_camenduru_hf_repo_id')
+        current_time = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        upload_file(path_or_fileobj=result, path_in_repo=f"tost-{current_time}-{name}.safetensors", repo_id=hf_repo_id, token=hf_token)
+        result_url = f"https://huggingface.co/{hf_repo_id}/resolve/main/tost-{current_time}-{name}.safetensors"
         payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{discord_channel}/messages",
