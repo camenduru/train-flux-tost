@@ -70,7 +70,7 @@ def generate(input):
         aws_secret_access_key = os.getenv('com_camenduru_aws_secret_access_key')
         s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
         s3.upload_file(result, "tost.ai", f"tost-{current_time}-{name}.safetensors")
-        result_url = f"https://huggingface.co/{hf_repo_id}/resolve/main/tost-{current_time}-{name}.safetensors"
+        result_url = f"https://s3.amazonaws.com/tost.ai/tost-{current_time}-{name}.safetensors"
         payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{discord_channel}/messages",
