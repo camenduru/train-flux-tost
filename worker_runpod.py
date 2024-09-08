@@ -1,8 +1,7 @@
-import os, shutil, json, tempfile, requests, runpod
+import os, shutil, json, tempfile, requests, boto3, runpod
 
 import yaml
 from toolkit.job import get_job
-from huggingface_hub import upload_file
 from slugify import slugify
 from datetime import datetime
 
@@ -66,10 +65,11 @@ def generate(input):
             discord_token = os.getenv('com_camenduru_discord_token')
         job_id = values['job_id']
         del values['job_id']
-        hf_token = os.getenv('com_camenduru_hf_token')
-        hf_repo_id = os.getenv('com_camenduru_hf_repo_id')
         current_time = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        upload_file(path_or_fileobj=result, path_in_repo=f"tost-{current_time}-{name}.safetensors", repo_id=hf_repo_id, token=hf_token)
+        aws_access_key_id = os.getenv('com_camenduru_aws_access_key_id')
+        aws_secret_access_key = os.getenv('com_camenduru_aws_secret_access_key')
+        s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+        s3.upload_file(result, "tost.ai", f"tost-{current_time}-{name}.safetensors")
         result_url = f"https://huggingface.co/{hf_repo_id}/resolve/main/tost-{current_time}-{name}.safetensors"
         payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
