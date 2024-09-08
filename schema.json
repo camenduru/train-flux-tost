@@ -14,6 +14,11 @@
       "tags": [
         "Text to Image"
       ],
+      "l1": "One Training Amount: 1,000 Wallet Balance",
+      "l2": "2,200 WBalance for $2.5: $1.14 per 1,000",
+      "l3": "5,500 WBalance for $5.5: $1.00 per 1,000",
+      "l4": "for $22: $0.67 per 1,000",
+      "l5": "For high-volume API access, please contact",
       "widget": "readme"
     },
     "name": {
