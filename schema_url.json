@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "properties": {
+    "readme": {
+      "type": "string",
+      "title": "Model: Flux.1 Dev | Train Lora",
+      "author": "Black Forest Labs: Andreas Blattmann, Andrew Holmes, Axel Sauer, Dominik Lorenz, Dustin Podell, Frederic Boesel, Harry Saini, Jonas Müller, Kyle Lacey, Patrick Esser, Robin Rombach, Sumith Kulal, Tim Dockhorn, Yam Levi, Zion English",
+      "page": "https://blackforestlabs.ai/",
+      "code": "https://github.com/black-forest-labs/flux",
+      "jupyter": "https://github.com/ostris/ai-toolkit",
+      "tutorial": "https://www.youtube.com/watch?v=BsmVflnxWtQ",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
+      "tags": [
+        "Text to Image"
+      ],
+      "l1": "One Training Amount: 1,000 Wallet Balance",
+      "l2": "2,200 WBalance for $2.5: $1.14 per 1,000",
+      "l3": "5,500 WBalance for $5.5: $1.00 per 1,000",
+      "l4": "for $22: $0.67 per 1,000",
+      "l5": "For high-volume API access, please contact",
+      "widget": "readme"
+    },
+    "name": {
+      "type": "string",
+      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can enter a maximum of 12 image URLs.",
+      "widget": "textarea"
+    },
+    "images": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Input Image URL: ",
+            "widget": "textarea"
+          }
+        }
+      }
+    },
+    "config_yaml_url": {
+      "type": "string",
+      "description": "Config yaml URL",
+      "widget": "textarea",
+      "readOnly": true
+    }
+  },
+  "buttons": [
+    {
+      "id": "enter",
+      "label": "🥪 Enter"
+    }
+  ]
+}
