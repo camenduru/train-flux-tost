@@ -10,7 +10,7 @@
       "code": "https://github.com/black-forest-labs/flux",
       "jupyter": "https://github.com/ostris/ai-toolkit",
       "tutorial": "https://www.youtube.com/watch?v=BsmVflnxWtQ",
-      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux.ipynb",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux-url.ipynb",
       "tags": [
         "Text to Image"
       ],
