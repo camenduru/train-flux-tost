@@ -23,7 +23,7 @@
     },
     "name": {
       "type": "string",
-      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can enter a maximum of 12 image URLs. ⚠ Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe",
+      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can enter a maximum of 12 image URLs. ⚠ Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe. ⚠ Please remember that files expire; don’t forget to download them.",
       "widget": "textarea"
     },
     "images": {
