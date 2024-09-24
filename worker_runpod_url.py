@@ -19,7 +19,7 @@ def generate(input):
 
     name = values['name']
     name = slugify(name)
-    images = values['input_image_files']
+    images = values['images']
     config_yaml_url = values['config_yaml_url']
 
     temp_path = '/content/ai-toolkit/temp'
