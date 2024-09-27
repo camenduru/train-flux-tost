@@ -10,7 +10,7 @@
       "code": "https://github.com/black-forest-labs/flux",
       "jupyter": "https://github.com/ostris/ai-toolkit",
       "tutorial": "https://www.youtube.com/watch?v=BsmVflnxWtQ",
-      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux-url.ipynb",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/train-flux-pro.ipynb",
       "tags": [
         "Text to Image"
       ],
@@ -23,7 +23,7 @@
     },
     "name": {
       "type": "string",
-      "description": "⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can enter a maximum of 12 image URLs. ⚠ Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe. ⚠ Please remember that files expire; don’t forget to download them.",
+      "description": "⚠ PRO apps have no cooldown. ⚠ Trigger words should be unique, such as c7ay1fy. ⚠ Please avoid using special characters. Only use English characters and numbers. ⚠ You can enter a maximum of 12 image URLs. ⚠ Discord image links are not reachable; image links should be in a publicly reachable URL. If you're not sure, please use the image storage service https://catbox.moe. ⚠ Please remember that files expire; don’t forget to download them.",
       "widget": "textarea"
     },
     "images": {
