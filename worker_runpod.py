@@ -22,6 +22,14 @@ def generate(input):
     images = values['input_image_files']
     config_yaml_url = values['config_yaml_url']
 
+    job_id = values['job_id']
+    if not isinstance(name, str) or not name:
+        return {"jobId": job_id, "result": "FAILED: Invalid or missing 'name'", "status": "FAILED"}
+    if not isinstance(images, list) or len(images) == 0:
+        return {"jobId": job_id, "result": "FAILED: No images provided or invalid 'images' format", "status": "FAILED"}
+    if not isinstance(config_yaml_url, str) or not config_yaml_url:
+        return {"jobId": job_id, "result": "FAILED: Invalid or missing 'config_yaml_url'", "status": "FAILED"}
+
     temp_path = '/content/ai-toolkit/temp'
     os.makedirs(temp_path, exist_ok=True)
     replace_yaml_file = download_file(url=config_yaml_url, save_dir=temp_path, file_name='replace.yaml')
