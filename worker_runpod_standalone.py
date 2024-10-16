@@ -1,31 +1,31 @@
-import os, shutil, json, tempfile, requests, boto3, runpod
+import os, subprocess, shutil, json, tempfile, requests, boto3, runpod
 
 import yaml
 from toolkit.job import get_job
 from slugify import slugify
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
-
-session = requests.Session()
 
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, file_name)
-    response = session.get(url)
+    response = requests.get(url)
     response.raise_for_status()
     with open(file_path, 'wb') as file:
         file.write(response.content)
     return file_path
 
 def parallel_download(images, save_dir, name):
-    with ThreadPoolExecutor() as executor:
-        futures = []
-        for i, image in enumerate(images):
-            file_suffix = os.path.splitext(image['url'])[1]
-            file_name = f'{i+1}_Euler_{name}{file_suffix}'
-            futures.append(executor.submit(download_file, image['url'], save_dir, file_name))
-        for future in as_completed(futures):
-            future.result()
+    download_commands = []
+    for i, image in enumerate(images):
+        file_suffix = os.path.splitext(image['url'])[1]
+        file_name = f'{i + 1}_Euler_{name}{file_suffix}'
+        file_path = os.path.join(save_dir, file_name)
+        download_commands.append(f"{image['url']} -o {file_path}")
+    command = ['aria2c'] + download_commands
+    try:
+        subprocess.run(command, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error during download: {e}")
 
 def generate(input):
     try:
@@ -36,10 +36,10 @@ def generate(input):
         config_yaml_url = values['config_yaml_url']
 
         temp_path = tempfile.mkdtemp(prefix="ai-toolkit-")
-        replace_yaml_file = download_file(url=config_yaml_url, save_dir=temp_path, file_name='replace.yaml')
-        config_yaml_file = os.path.join(temp_path, name, f'{name}.yaml')
-        directory_path = os.path.dirname(config_yaml_file)
+        directory_path = os.path.join(temp_path, name)
         os.makedirs(directory_path, exist_ok=True)
+        replace_yaml_file = download_file(url=config_yaml_url, save_dir=temp_path, file_name='replace.yaml')
+        config_yaml_file = os.path.join(directory_path, f'{name}.yaml')
         with open(replace_yaml_file, 'r') as file:
             config = yaml.safe_load(file)
         config['config']['name'] = name
@@ -48,7 +48,10 @@ def generate(input):
         with open(config_yaml_file, 'w') as file:
             yaml.dump(config, file, sort_keys=False)
 
-        parallel_download(images, directory_path, name)
+        if images:
+            parallel_download(images, directory_path, name)
+        else:
+            return {"error": "No images provided"}
 
         job = get_job(config_yaml_file)
         job.run()
@@ -68,7 +71,7 @@ def generate(input):
         if r2_dev_url:
             result_url = f"https://{r2_dev_url}/tost-{current_time}-{name}.safetensors"
         else:
-            result_url = f"https://{s3_endpoint_url}/{s3_bucket_name}/tost-{current_time}-{name}.safetensors"        
+            result_url = f"https://{s3_endpoint_url}/{s3_bucket_name}/tost-{current_time}-{name}.safetensors"
         return {"result": result_url}
     except Exception as e:
         return {"error": str(e)}
