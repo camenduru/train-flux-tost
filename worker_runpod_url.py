@@ -77,10 +77,14 @@ def generate(input):
         s3_access_key_id = os.getenv('com_camenduru_s3_access_key_id')
         s3_secret_access_key = os.getenv('com_camenduru_s3_secret_access_key')
         s3_endpoint_url = os.getenv('com_camenduru_s3_endpoint_url')
+        r2_dev_url = os.getenv('com_camenduru_r2_dev_url')
         s3_bucket_name = os.getenv('com_camenduru_s3_bucket_name')
         s3 = boto3.client('s3', aws_access_key_id=s3_access_key_id, aws_secret_access_key=s3_secret_access_key, endpoint_url=f"https://{s3_endpoint_url}")
         s3.upload_file(result, s3_bucket_name, f"tost-{current_time}-{name}.safetensors", ExtraArgs={'ACL': 'public-read'})
-        result_url = f"https://{s3_endpoint_url}/{s3_bucket_name}/tost-{current_time}-{name}.safetensors"
+        if r2_dev_url:
+            result_url = f"https://{r2_dev_url}/tost-{current_time}-{name}.safetensors"
+        else:
+            result_url = f"https://{s3_endpoint_url}/{s3_bucket_name}/tost-{current_time}-{name}.safetensors"
         payload = {"content": f"{json.dumps(values)} <@{discord_id}> {result_url}"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{discord_channel}/messages",
