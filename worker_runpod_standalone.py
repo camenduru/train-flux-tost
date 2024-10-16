@@ -4,29 +4,40 @@ import yaml
 from toolkit.job import get_job
 from slugify import slugify
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+session = requests.Session()
 
 def download_file(url, save_dir, file_name):
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, file_name)
-    response = requests.get(url)
+    response = session.get(url)
     response.raise_for_status()
     with open(file_path, 'wb') as file:
         file.write(response.content)
     return file_path
 
+def parallel_download(images, save_dir, name):
+    with ThreadPoolExecutor() as executor:
+        futures = []
+        for i, image in enumerate(images):
+            file_suffix = os.path.splitext(image['url'])[1]
+            file_name = f'{i+1}_Euler_{name}{file_suffix}'
+            futures.append(executor.submit(download_file, image['url'], save_dir, file_name))
+        for future in as_completed(futures):
+            future.result()
+
 def generate(input):
     try:
         values = input['input']
 
-        name = values['name']
-        name = slugify(name)
+        name = slugify(values['name'])
         images = values['images']
         config_yaml_url = values['config_yaml_url']
 
-        temp_path = '/content/ai-toolkit/temp'
-        os.makedirs(temp_path, exist_ok=True)
+        temp_path = tempfile.mkdtemp(prefix="ai-toolkit-")
         replace_yaml_file = download_file(url=config_yaml_url, save_dir=temp_path, file_name='replace.yaml')
-        config_yaml_file = f'{temp_path}/{name}/{name}.yaml'
+        config_yaml_file = os.path.join(temp_path, name, f'{name}.yaml')
         directory_path = os.path.dirname(config_yaml_file)
         os.makedirs(directory_path, exist_ok=True)
         with open(replace_yaml_file, 'r') as file:
@@ -37,9 +48,7 @@ def generate(input):
         with open(config_yaml_file, 'w') as file:
             yaml.dump(config, file, sort_keys=False)
 
-        for i, image in enumerate(images):
-            file_suffix = os.path.splitext(image['url'])[1]
-            download_file(url=image['url'], save_dir=directory_path, file_name=f'{i+1}_Euler_{name}{file_suffix}')
+        parallel_download(images, directory_path, name)
 
         job = get_job(config_yaml_file)
         job.run()
@@ -62,8 +71,9 @@ def generate(input):
         return {"error": str(e)}
     finally:
         if os.path.exists(temp_path):
-            shutil.rmtree(temp_path)
-        if os.path.exists(result_path):
-            shutil.rmtree(result_path)
+            try:
+                shutil.rmtree(temp_path, ignore_errors=True)
+            except Exception as e:
+                print(f"Error during temp path cleanup: {e}")
 
 runpod.serverless.start({"handler": generate})
