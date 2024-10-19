@@ -15,4 +15,4 @@ https://blackforestlabs.ai/
 ![Screenshot 2024-09-03 181320](https://github.com/user-attachments/assets/c8a43628-e07b-4cb9-9e63-a7295a139f01)
 
 ### 🏢 Sponsor
-https://runpod.io
+[https://runpod.io](https://runpod.io?ref=iqi9iy8y)
